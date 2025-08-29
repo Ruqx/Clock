@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clock with Side Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Side Panel -->
+<div id="sidePanel" class="side-panel">
+  <button id="toggleBtn" class="toggle-btn">
+    ☰
+  </button>
+  <h2>Menu</h2>
+  <ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>Settings</li>
+    <li><a href="./goals/goals.html">Goals</a></li>
+  </ul>
+</div>
+
+<!-- Add this below your canvas (before closing body tag) -->
+<div id="todoNote" class="todo-note">
+  <div class="todo-header">
+    <span>📝 Todo</span>
+    <button id="closeTodo">×</button>
+  </div>
+  <ul id="todoList" contenteditable="false"></ul>
+  <input id="todoInput" type="text" placeholder="Type task and press Enter..." />
+  <div class="resizer"></div>
+</div>
+
+<button id="openTodo" class="open-todo-btn">📝 Todo</button>
+
+  <!-- Clock canvas -->
+  <canvas id="clockCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
