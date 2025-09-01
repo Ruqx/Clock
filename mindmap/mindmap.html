@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map</title>
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="mindmap.css"> </head>
+<body>
+      <div id="sidePanel" class="side-panel">
+        <button id="toggleBtn" class="toggle-btn">
+            ☰
+        </button>
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="../index.html">Home (Clock)</a></li>
+            <li>About</li>
+            <li>Settings</li>
+            <li><a href="./goals/goals.html">Goals</a></li>
+            <li><a href="../notes/notes.html">Notes</a></li>
+            <li><a href="../mindmap/mindmap.html">Mind Map</a></li>
+        </ul>
+    </div>
+    <div id="mindmap-container">
+        <canvas id="mindmapCanvas"></canvas>
+    </div>
+    <div id="node-details" class="hidden">
+        <h3 id="node-title"></h3>
+        <p id="node-type"></p>
+        <a id="node-link" href="#" target="_blank">View Details</a>
+    </div>
+
+    <script src="mindmap.js"></script>
+</body>
+</html>
