@@ -254,3 +254,9 @@ canvas {
 .open-todo-btn:hover {
   background: #a35656; /* darker pink hover */
 }
+
+.goal-note.highlight {
+    z-index: 1000; /* Bring it to the top */
+    box-shadow: 0 0 20px 5px var(--accent-color); /* Add a glow */
+    transition: box-shadow 0.3s ease-in-out;
+}
