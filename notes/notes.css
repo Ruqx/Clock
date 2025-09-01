@@ -1,0 +1,432 @@
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.note-card {
+    background-color: #fff8e1; /* Pastel yellow */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card:active {
+    cursor: grabbing;
+}
+
+.note-card.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+
+.note-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: none;
+    background: transparent;
+    cursor: text;
+    width: 100%;
+}
+
+.note-content {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    min-height: 100px;
+    resize: none;
+    cursor: text;
+}
+
+.note-files {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.file-item a {
+    text-decoration: none;
+    color: #4B2E2E; /* Brown */
+}
+
+.file-item button {
+    background: none;
+    border: none;
+    color: #cc0000;
+    cursor: pointer;
+}
+
+.file-input-label {
+    background-color: #F4A6B8; /* Pink */
+    color: #4B2E2E; /* Brown */
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Add this to your notes.css */
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+}
+
+/* Add this to notes.css */
+body {
+    background-color: #fce4ec; /* A soft, light pink pastel color */
+    margin: 0; /* Remove default body margin */
+    font-family: Arial, sans-serif; /* Example font */
+}
+
+.banner-container {
+    background-color: #F4A6B8; /* A slightly darker pastel pink */
+    color: #4B2E2E; /* Rich chocolate brown for contrast */
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#banner-text {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Existing styles for notes-container and note-card */
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.note-card {
+    background-color: #fff8e1; /* Pastel yellow */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card:active {
+    cursor: grabbing;
+}
+
+.note-card.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+}
+
+.note-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: none;
+    background: transparent;
+    cursor: text;
+    width: 100%;
+}
+
+.note-content {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    min-height: 100px;
+    resize: none;
+    cursor: text;
+}
+
+.note-files {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.file-item a {
+    text-decoration: none;
+    color: #4B2E2E; /* Brown */
+}
+
+.file-item button {
+    background: none;
+    border: none;
+    color: #cc0000;
+    cursor: pointer;
+}
+
+.file-input-label {
+    background-color: #F4A6B8; /* Pink */
+    color: #4B2E2E; /* Brown */
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Add these styles to notes.css */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hide by default */
+    width: 280px;
+    height: 100%;
+    background-color: #fce4ec;
+    border-left: 1px solid #ccc;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.settings-panel.open {
+    right: 0; /* Slide in */
+}
+
+.setting-group {
+    margin-bottom: 15px;
+}
+
+.setting-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #4B2E2E;
+}
+
+.setting-group input[type="color"],
+.setting-group select {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#resetSettings {
+    background-color: #F4A6B8;
+    color: #4B2E2E;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+#toggleSettingsBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #F4A6B8;
+    color: #4B2E2E;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 1.2em;
+}
+
+/* Update existing body styles to remove the hardcoded background color */
+body {
+    /* Remove background-color from here as it will be set dynamically */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Update existing banner and note card styles to use CSS variables */
+.banner-container {
+    background-color: var(--banner-color, #F4A6B8);
+    color: var(--banner-text-color, #4B2E2E);
+    /* ... other banner styles */
+}
+
+.note-card {
+    background-color: var(--note-color, #fff8e1);
+    /* ... other note card styles */
+}
+
+/* SIDE PANEL */
+.side-panel {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;              /* fully hidden except the peeking button */
+  background-color: #8B5E3C; /* brown */
+  color: #fff;
+  padding: 70px 20px 20px 20px; /* room at top for button */
+  transition: left 0.36s cubic-bezier(.2,.9,.3,1);
+  box-shadow: 2px 0 10px rgba(0,0,0,0.25);
+  z-index: 12; /* above canvas */
+}
+
+/* when open */
+.side-panel.open {
+  left: 0;
+}
+
+/* internal content */
+.side-panel h2 {
+  margin: 0 0 18px 0;
+  font-size: 20px;
+  text-align: center;
+  color: #fff5f0;
+}
+
+.side-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-panel ul li {
+  margin: 14px 0;
+  cursor: pointer;
+  transition: color 0.16s;
+  text-align: left;
+  padding-left: 8px;
+  color: #fff5f0;
+}
+.side-panel ul li:hover { color: #FFD1DC; }
+
+/* TOGGLE BUTTON - pinned to the panel's right edge, peeking out */
+.toggle-btn {
+  position: absolute;       /* positioned relative to .side-panel */
+  top: 16px;
+  right: -48px;             /* peeks outside the panel by 48px */
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  background: #FFD1DC;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  padding: 0;
+}
+
+/* three bars (hamburger) */
+.bar {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  background: #4B2E2E; /* warm brown lines */
+  border-radius: 2px;
+  transition: transform 0.28s cubic-bezier(.2,.9,.3,1), opacity 0.2s;
+  margin: 3px 0;
+}
+
+/* transform hamburger into X when panel open */
+.side-panel.open .bar1 {
+  transform: translateY(6px) rotate(45deg);
+}
+.side-panel.open .bar2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.side-panel.open .bar3 {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* small responsive tweak: reduce peek on very small screens */
+@media (max-width: 420px) {
+  .side-panel { width: 220px; left: -220px; }
+  .side-panel.open { left: 0; }
+  .toggle-btn { right: -44px; width: 40px; height: 40px; }
+}
+
+/* make sure canvas stays centered and not overlapped visually by the button (z-index handled) */
+/* Side Panel */
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #8B5E3C; /* warm brown */
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  padding: 60px 20px 20px; /* leave space for button */
+  color: #fff;
+}
+
+.side-panel.open {
+  left: 0;
+}
