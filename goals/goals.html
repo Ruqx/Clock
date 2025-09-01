@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Goals</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="goals.css" />
+  <link rel="stylesheet" href="sidebar/sidebar.css" />
+</head>
+<body>
+  <div id="sidePanel" class="side-panel">
+        <button id="toggleBtn" class="toggle-btn">
+            ☰
+        </button>
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="../index.html">Home (Clock)</a></li>
+            <li>About</li>
+            <li>Settings</li>
+            <li><a href="./goals/goals.html">Goals</a></li>
+            <li><a href="../notes/notes.html">Notes</a></li>
+            <li><a href="../mindmap/mindmap.html">Mind Map</a></li>
+        </ul>
+    </div>
+  <!-- Top banner -->
+  <header class="goals-banner">
+    <div class="banner-options">
+      <label>
+        <input type="radio" name="bannerType" value="color" checked> Color
+      </label>
+      <label>
+        <input type="radio" name="bannerType" value="image"> Image
+      </label>
+      <input type="color" id="bannerColor" value="#d68a8a">
+      <input type="file" id="bannerImage" accept="image/*" style="display:none;">
+    </div>
+    <h1>🎯 My Goals</h1>
+  </header>
+
+  <!-- Workspace -->
+  <main id="goalBoard" class="goal-board">
+    <!-- Goal notes will be added here dynamically -->
+  </main>
+
+  <!-- Add Goal Button -->
+  <button id="addGoalBtn" class="add-goal-btn">＋</button>
+
+  <script src="goals.js"></script>
+</body>
+</html>
