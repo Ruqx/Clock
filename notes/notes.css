@@ -1,350 +1,87 @@
-.notes-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+/* ==========================================================================
+   1. General & Root Styles
+   ========================================================================== */
+
+:root {
+  --color-background: #fce4ec; /* Soft pink */
+  --color-banner: #F4A6B8;      /* Darker pink */
+  --color-note: #fff8e1;       /* Pastel yellow */
+  --color-side-panel: #8B5E3C; /* Warm brown */
+  --color-text-dark: #4B2E2E;  /* Rich brown */
+  --color-text-light: #fff5f0; /* Off-white */
 }
 
-.note-card {
-    background-color: #fff8e1; /* Pastel yellow */
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: grab;
-    transition: transform 0.2s ease-in-out;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.note-card:active {
-    cursor: grabbing;
-}
-
-.note-card.dragging {
-    opacity: 0.5;
-    transform: scale(1.05);
-}
-
-.note-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border: none;
-    background: transparent;
-    cursor: text;
-    width: 100%;
-}
-
-.note-content {
-    flex-grow: 1;
-    border: none;
-    background: transparent;
-    min-height: 100px;
-    resize: none;
-    cursor: text;
-}
-
-.note-files {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed #ccc;
-}
-
-.file-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 5px;
-}
-
-.file-item a {
-    text-decoration: none;
-    color: #4B2E2E; /* Brown */
-}
-
-.file-item button {
-    background: none;
-    border: none;
-    color: #cc0000;
-    cursor: pointer;
-}
-
-.file-input-label {
-    background-color: #F4A6B8; /* Pink */
-    color: #4B2E2E; /* Brown */
-    padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-.file-input {
-    display: none;
-}
-
-/* Add this to your notes.css */
-.note-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.delete-btn {
-    background: none;
-    border: none;
-    font-size: 1.2em;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.delete-btn:hover {
-    opacity: 1;
-}
-
-/* Add this to notes.css */
 body {
-    background-color: #fce4ec; /* A soft, light pink pastel color */
-    margin: 0; /* Remove default body margin */
-    font-family: Arial, sans-serif; /* Example font */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--page-bg, var(--color-background));
+  transition: background-color 0.3s;
+}
+
+/* ==========================================================================
+   2. Main Layout Containers (Banner & Notes)
+   ========================================================================== */
+
+/* This is the new wrapper that will be pushed */
+.main-content {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Push the wrapper when the body has the 'side-panel-open' class */
+body.side-panel-open .main-content {
+  margin-left: 250px;
 }
 
 .banner-container {
-    background-color: #F4A6B8; /* A slightly darker pastel pink */
-    color: #4B2E2E; /* Rich chocolate brown for contrast */
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  background-color: var(--banner-color, var(--color-banner));
+  color: var(--banner-text-color, var(--color-text-dark));
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #banner-text {
-    margin: 0;
-    font-size: 2.5em;
-    font-weight: bold;
-    cursor: pointer;
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-/* Existing styles for notes-container and note-card */
 .notes-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.note-card {
-    background-color: #fff8e1; /* Pastel yellow */
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: grab;
-    transition: transform 0.2s ease-in-out;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
+/* ==========================================================================
+   3. Left Side Panel & Toggle Button (Updated to match goals.css)
+   ========================================================================== */
 
-.note-card:active {
-    cursor: grabbing;
-}
-
-.note-card.dragging {
-    opacity: 0.5;
-    transform: scale(1.05);
-}
-
-.note-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.delete-btn {
-    background: none;
-    border: none;
-    font-size: 1.2em;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.delete-btn:hover {
-    opacity: 1;
-}
-
-.note-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border: none;
-    background: transparent;
-    cursor: text;
-    width: 100%;
-}
-
-.note-content {
-    flex-grow: 1;
-    border: none;
-    background: transparent;
-    min-height: 100px;
-    resize: none;
-    cursor: text;
-}
-
-.note-files {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed #ccc;
-}
-
-.file-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 5px;
-}
-
-.file-item a {
-    text-decoration: none;
-    color: #4B2E2E; /* Brown */
-}
-
-.file-item button {
-    background: none;
-    border: none;
-    color: #cc0000;
-    cursor: pointer;
-}
-
-.file-input-label {
-    background-color: #F4A6B8; /* Pink */
-    color: #4B2E2E; /* Brown */
-    padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-.file-input {
-    display: none;
-}
-
-/* Add these styles to notes.css */
-.settings-panel {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Hide by default */
-    width: 280px;
-    height: 100%;
-    background-color: #fce4ec;
-    border-left: 1px solid #ccc;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-.settings-panel.open {
-    right: 0; /* Slide in */
-}
-
-.setting-group {
-    margin-bottom: 15px;
-}
-
-.setting-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #4B2E2E;
-}
-
-.setting-group input[type="color"],
-.setting-group select {
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 5px;
-    border-radius: 4px;
-}
-
-#resetSettings {
-    background-color: #F4A6B8;
-    color: #4B2E2E;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9em;
-}
-
-#toggleSettingsBtn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #F4A6B8;
-    color: #4B2E2E;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    z-index: 1001;
-    font-size: 1.2em;
-}
-
-/* Update existing body styles to remove the hardcoded background color */
-body {
-    /* Remove background-color from here as it will be set dynamically */
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* Update existing banner and note card styles to use CSS variables */
-.banner-container {
-    background-color: var(--banner-color, #F4A6B8);
-    color: var(--banner-text-color, #4B2E2E);
-    /* ... other banner styles */
-}
-
-.note-card {
-    background-color: var(--note-color, #fff8e1);
-    /* ... other note card styles */
-}
-
-/* SIDE PANEL */
 .side-panel {
   height: 100%;
   width: 250px;
   position: fixed;
   top: 0;
-  left: -250px;              /* fully hidden except the peeking button */
-  background-color: #8B5E3C; /* brown */
-  color: #fff;
-  padding: 70px 20px 20px 20px; /* room at top for button */
-  transition: left 0.36s cubic-bezier(.2,.9,.3,1);
-  box-shadow: 2px 0 10px rgba(0,0,0,0.25);
-  z-index: 12; /* above canvas */
-}
-
-/* when open */
-.side-panel.open {
   left: 0;
+  background-color: var(--color-side-panel);
+  color: var(--color-text-light);
+  padding: 70px 20px 20px 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.25);
+  z-index: 1100;
+  /* Use transform for hiding/showing, just like in goals.css */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 
-/* internal content */
+.side-panel.open {
+  transform: translateX(0);
+}
+
 .side-panel h2 {
   margin: 0 0 18px 0;
-  font-size: 20px;
+  font-size: 1.25em;
   text-align: center;
-  color: #fff5f0;
 }
 
 .side-panel ul {
@@ -355,19 +92,20 @@ body {
 
 .side-panel ul li {
   margin: 14px 0;
+  padding-left: 8px;
   cursor: pointer;
   transition: color 0.16s;
-  text-align: left;
-  padding-left: 8px;
-  color: #fff5f0;
 }
-.side-panel ul li:hover { color: #FFD1DC; }
 
-/* TOGGLE BUTTON - pinned to the panel's right edge, peeking out */
+.side-panel ul li:hover {
+  color: #FFD1DC;
+}
+
 .toggle-btn {
-  position: absolute;       /* positioned relative to .side-panel */
-  top: 16px;
-  right: -48px;             /* peeks outside the panel by 48px */
+  position: absolute;
+  top: 20px;
+  /* Positioned relative to the panel's new location */
+  left: 290px; 
   width: 44px;
   height: 44px;
   border-radius: 8px;
@@ -375,58 +113,147 @@ body {
   background: #FFD1DC;
   box-shadow: 0 4px 10px rgba(0,0,0,0.18);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 20;
+  z-index: 1101;
   padding: 0;
+  gap: 5px;
 }
 
-/* three bars (hamburger) */
 .bar {
   display: block;
   width: 20px;
   height: 2.5px;
-  background: #4B2E2E; /* warm brown lines */
+  background: var(--color-text-dark);
   border-radius: 2px;
-  transition: transform 0.28s cubic-bezier(.2,.9,.3,1), opacity 0.2s;
-  margin: 3px 0;
+  transition: transform 0.28s ease-in-out, opacity 0.2s;
 }
 
-/* transform hamburger into X when panel open */
-.side-panel.open .bar1 {
-  transform: translateY(6px) rotate(45deg);
-}
-.side-panel.open .bar2 {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.side-panel.open .bar3 {
-  transform: translateY(-6px) rotate(-45deg);
+.side-panel.open .toggle-btn .bar1 { transform: translateY(5.5px) rotate(45deg); }
+.side-panel.open .toggle-btn .bar2 { opacity: 0; }
+.side-panel.open .toggle-btn .bar3 { transform: translateY(-5.5px) rotate(-45deg); }
+
+
+/* ==========================================================================
+   4. Right Settings Panel & Toggle Button
+   ========================================================================== */
+/* ... All your other styles for settings, notes, etc. remain unchanged ... */
+#toggleSettingsBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-banner);
+  color: var(--color-text-dark);
+  border: none;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1001;
+  font-size: 1.2em;
 }
 
-/* small responsive tweak: reduce peek on very small screens */
-@media (max-width: 420px) {
-  .side-panel { width: 220px; left: -220px; }
-  .side-panel.open { left: 0; }
-  .toggle-btn { right: -44px; width: 40px; height: 40px; }
-}
-
-/* make sure canvas stays centered and not overlapped visually by the button (z-index handled) */
-/* Side Panel */
-.side-panel {
+.settings-panel {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  right: -320px;
+  width: 280px;
   height: 100%;
-  background: #8B5E3C; /* warm brown */
-  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-  transition: left 0.3s ease;
-  padding: 60px 20px 20px; /* leave space for button */
-  color: #fff;
+  background-color: var(--color-background);
+  border-left: 1px solid #ccc;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
 }
 
-.side-panel.open {
-  left: 0;
+.settings-panel.open {
+  right: 0;
+}
+
+.setting-group { margin-bottom: 15px; }
+.setting-group label { display: block; font-weight: bold; margin-bottom: 5px; color: var(--color-text-dark); }
+.setting-group input[type="color"], .setting-group select { width: 100%; border: 1px solid #ccc; padding: 5px; border-radius: 4px; }
+#resetSettings { background-color: var(--color-banner); color: var(--color-text-dark); border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; }
+
+/* ==========================================================================
+   5. Note Card Components
+   ========================================================================== */
+.note-card {
+  background-color: var(--note-color, var(--color-note));
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.note-card:active { cursor: grabbing; }
+.note-card.dragging { opacity: 0.5; transform: scale(1.05); box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); }
+.note-header { display: flex; justify-content: space-between; align-items: center; }
+.note-title { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; border: none; background: transparent; cursor: text; width: 100%; padding: 0; }
+.delete-btn { background: none; border: none; font-size: 1.2em; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; padding: 0 5px; }
+.delete-btn:hover { opacity: 1; }
+.note-content { flex-grow: 1; border: none; background: transparent; min-height: 100px; resize: none; cursor: text; }
+.note-files { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; }
+.file-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 0.9em; }
+.file-item a { text-decoration: none; color: var(--color-text-dark); word-break: break-all; }
+.file-item button { background: none; border: none; color: #cc0000; cursor: pointer; margin-left: auto; padding: 0; }
+.file-input-label { background-color: var(--color-banner); color: var(--color-text-dark); padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8em; margin-top: 10px; display: inline-block; }
+.file-input { display: none; }
+/* ==========================================================================
+   6. Responsive Design
+   ========================================================================== */
+@media (max-width: 420px) {
+  .side-panel {
+    width: 220px;
+  }
+
+  .toggle-btn {
+    left: 220px; /* Match panel width */
+  }
+  
+  body.side-panel-open .main-content {
+    margin-left: 220px; /* Match responsive panel width */
+  }
+}
+
+/* ==========================================================================
+   7. Action Buttons
+   ========================================================================== */
+
+.add-note-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--color-banner);
+  color: var(--color-text-dark);
+  border: none;
+  border-radius: 50px; /* Creates a pill shape */
+  padding: 15px 25px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1050; /* Ensures it's above notes but below panels */
+}
+
+.add-note-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.add-note-btn span {
+  font-size: 1.5em;
+  line-height: 1;
 }
